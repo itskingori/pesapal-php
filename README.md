@@ -227,6 +227,10 @@ _Ps 2: At this point you may be wondering why PesaPal didn't send you the status
 of the transaction? They only send you the  `$pesapal_transaction_tracking_id`
 and the `$pesapal_merchant_reference` for security reasons._
 
+_Ps 3: Find screenshot of Merchant IPN Settings panel below;
+
+![Merchant IPN Settings Image](assets/merchant_ipn_settings.png "Merchant IPN (Instant Payment Notifications) Settings Image")
+
 ##API Methods##
 
 1. __PostPesapalDirectOrderV4__ - Use this to post a transaction to PesaPal. PesaPal will present the user with a page which contains the available payment options and will redirect to your site once the user has completed the payment process. A tracking id will be returned as a query parameter – this can be used subsequently to track the payment status on pesapal for this transaction.
