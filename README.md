@@ -1,4 +1,4 @@
-#Pesapal PHP API Reference (Un-official)#
+#Pesapal PHP API Reference (Unofficial)#
 
 [PesaPal](pesapal.com) provides a simple, safe and secure way for individuals
 and businesses to make and accept payments in Africa. PesaPal payments work on
