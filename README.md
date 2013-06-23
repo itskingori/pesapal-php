@@ -251,7 +251,7 @@ and the `$pesapal_merchant_reference` for security reasons._
 
 _Ps 3: Find screenshot of Merchant IPN Settings panel below;_
 
-![Merchant IPN Settings Image](assets/merchant_ipn_settings.png "Merchant IPN (Instant Payment Notifications) Settings Image")
+![Merchant IPN Settings Image](assets/merchant_ipn_settings.png "Merchant IPN (Instant Payment Notifications) Settings Screenshot")
 
 ##Testing Sandbox##
 
