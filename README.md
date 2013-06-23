@@ -17,8 +17,9 @@ _Ps: Download [this (itsmrwave/pesapal-php) here](https://github.com/itsmrwave/p
 
 1. [File Structure](#file-structure)
 2. [How To Use](#how-to-use) - [Simplified](#simplified) & [Step-by-Step Walkthrough](#step-by-step-walkthrough)
-3. [API Methods](#api-methods)
-4. [Resources](#resources)
+3. [Testing Sandbox](#testing-sandbox)
+4. [API Methods](#api-methods)
+5. [Resources](#resources)
 
 ##File Structure##
 
@@ -236,9 +237,34 @@ _Ps 2: At this point you may be wondering why PesaPal didn't send you the status
 of the transaction? They only send you the  `$pesapal_transaction_tracking_id`
 and the `$pesapal_merchant_reference` for security reasons._
 
-_Ps 3: Find screenshot of Merchant IPN Settings panel below;
+_Ps 3: Find screenshot of Merchant IPN Settings panel below;_
 
 ![Merchant IPN Settings Image](assets/merchant_ipn_settings.png "Merchant IPN (Instant Payment Notifications) Settings Image")
+
+##Testing Sandbox##
+
+On [demo.pesapal.com](http://demo.pesapal.com/), you can take PesaPal for a test
+drive. With the sandbox you can test your integration before you take it live.
+You can create test merchant and buyer accounts, post transactions, make
+payments using our mobile money test module, query for payment status, etc.
+Please note that ___no real money is used___ on the demo site and you can test
+cash payment using the [dummy-money tool](http://demo.pesapal.com/mobilemoneytest).
+
+When you have confirmed that the integration is working as expected, switch to
+the live pesapal site, simply by updating the url and registering a live
+merchant account.
+
+_Ps: Email and SMS notifications are not available in sandbox._
+
+_Ps 2: The [live Pesapal account (on
+pesapal.com)](https://www.pesapal.com/account/register) & the [demo Pesapal
+account (on demo.pesapal.com)](http://demo.pesapal.com/account/register) are
+completely different and do not share consumer_key, consumer_secret or URLs of
+Pesapal API endpoints. Links to create accounts on each are
+[here](https://www.pesapal.com/account/register) &
+[here](http://demo.pesapal.com/account/register) respectively. You will then be
+able to find the consumer key & secret in the dashboard of each account once you
+log in._
 
 ##API Methods##
 
