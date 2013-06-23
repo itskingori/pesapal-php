@@ -11,6 +11,15 @@ PesaPal partners with Banks, Mobile Network Operators and Credit Card companies
 to give consumers as many payment options as possible. For businesses, they
 offer timely settlement of any payments to their bank account of choice.
 
+_Ps: Download [this (itsmrwave/pesapal-php) here](https://github.com/itsmrwave/pesapal-php/archive/master.zip)_
+
+***
+
+1. [File Structure](#file-structure)
+2. [How To Use](#how-to-use) - [Simplified](#simplified) & [Step-by-Step Walkthrough](#step-by-step-walkthrough)
+3. [API Methods](#api-methods)
+4. [Resources](#resources)
+
 ##File Structure##
 
 ```
