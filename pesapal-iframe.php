@@ -40,7 +40,19 @@ $callback_url = 'http://www.YOURDOMAIN.com/pesapal_callback.php';
 
 // The format is standard so no editing is required. Encode the variable using
 // htmlentities.
-$post_xml = '<?xml version="1.0" encoding="utf-8"?><PesapalDirectOrderInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Amount="'.$amount.'" Description="'.$desc.'" Type="'.$type.'" Reference="'.$reference.'" FirstName="'.$first_name.'" LastName="'.$last_name.'" Email="'.$email.'" PhoneNumber="'.$phonenumber.'" xmlns="http://www.pesapal.com" />';
+$post_xml = '<?xml version="1.0" encoding="utf-8"?>';
+$post_xml .= '<PesapalDirectOrderInfo ';
+$post_xml .= 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+$post_xml .= 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
+$post_xml .= 'Amount="'.$amount.'" ';
+$post_xml .= 'Description="'.$desc.'" ';
+$post_xml .= 'Type="'.$type.'" ';
+$post_xml .= 'Reference="'.$reference.'" ';
+$post_xml .= 'FirstName="'.$first_name.'" ';
+$post_xml .= 'LastName="'.$last_name.'" ';
+$post_xml .= 'Email="'.$email.'" ';
+$post_xml .= 'PhoneNumber="'.$phonenumber.'" ';
+$post_xml .= 'xmlns="http://www.pesapal.com" />';
 $post_xml = htmlentities($post_xml);
 
 $consumer = new OAuthConsumer($consumer_key, $consumer_secret);
