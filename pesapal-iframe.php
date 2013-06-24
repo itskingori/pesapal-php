@@ -18,8 +18,6 @@ $consumer_key = 'YOUR_PESAPAL_MERCHANT_CONSUMER_KEY';
 // www.pesapal.com
 $consumer_secret = 'YOUR_PESAPAL_MERCHANT_CONSUMER_SECRET';
 
-$signature_method = new OAuthSignatureMethod_HMAC_SHA1();
-
 // Change this to https://www.pesapal.com/API/PostPesapalDirectOrderV4 when you
 // are ready to go live
 $iframelink = 'http://demo.pesapal.com/api/PostPesapalDirectOrderV4';
@@ -58,6 +56,7 @@ $post_xml = htmlentities($post_xml);
 $consumer = new OAuthConsumer($consumer_key, $consumer_secret);
 
 // Construct the OAuth Request URL & post transaction to pesapal
+$signature_method = new OAuthSignatureMethod_HMAC_SHA1();
 $iframe_src = OAuthRequest::from_consumer_and_token($consumer, $token, 'GET', $iframelink, $params);
 $iframe_src -> set_parameter('oauth_callback', $callback_url);
 $iframe_src -> set_parameter('pesapal_request_data', $post_xml);
