@@ -66,8 +66,10 @@ if ($pesapal_notification_type == 'CHANGE' && $pesapal_transaction_tracking_id !
    // pesapal_transaction_tracking_id $pesapal_transaction_tracking_id
 
    if (DB_UPDATE_IS_SUCCESSFUL) {
-    
-        $resp='pesapal_notification_type=$pesapal_notification_type&pesapal_transaction_tracking_id=$pesapal_transaction_tracking_id&pesapal_merchant_reference=$pesapal_merchant_reference';
+
+        $resp = 'pesapal_notification_type='.$pesapal_notification_type;
+        $resp .= '&pesapal_transaction_tracking_id='.$pesapal_transaction_tracking_id;
+        $resp .= '&pesapal_merchant_reference='.$pesapal_merchant_reference;
         ob_start();
         echo $resp;
         ob_flush();
