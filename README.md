@@ -278,6 +278,8 @@ Pesapal API endpoints. Links to create accounts on each are
 able to find the consumer key & secret in the dashboard of each account once you
 log in._
 
+_Ps 3: Live API endpoints are HTTPS but the demo api endpoints are HTTP._
+
 ##API Methods##
 
 1. __PostPesapalDirectOrderV4__ - Use this to post a transaction to PesaPal. PesaPal will present the user with a page which contains the available payment options and will redirect to your site once the user has completed the payment process. A tracking id will be returned as a query parameter – this can be used subsequently to track the payment status on pesapal for this transaction.

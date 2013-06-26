@@ -13,7 +13,7 @@ $consumer_secret = 'YOUR_PESAPAL_MERCHANT_CONSUMER_SECRET';
 
 // Change to https://www.pesapal.com/api/QueryPaymentStatus' when you are ready
 // to go live!
-$statusrequestAPI = 'https://demo.pesapal.com/api/QueryPaymentStatus';
+$statusrequestAPI = 'http://demo.pesapal.com/api/QueryPaymentStatus';
 
 // Fetch parameters sent to you by PesaPal IPN call. PesaPal will call the URL
 // you entered above with the below query parameters;
