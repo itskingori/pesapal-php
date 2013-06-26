@@ -13,6 +13,13 @@ offer timely settlement of any payments to their bank account of choice.
 
 _Ps: Download [this (itsmrwave/pesapal-php) here](https://github.com/itsmrwave/pesapal-php/archive/master.zip)_
 
+_Ps 2: Purpose of this is to make it easier for other people willing to
+integrate to Pesapal ... initial code posted on the official site had some minor
+bugs. I have made these changes therein, [documented them on the Pesapal Forums
+here](http://developer.pesapal.com/forum/2-pesapal-integration/455-unofficial-
+pesapal-integration-reference) and shared my findings with the Pesapal team so
+that they can ammend the documentation on their site._
+
 ***
 
 1. [File Structure](#file-structure)
