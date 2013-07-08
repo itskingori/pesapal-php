@@ -21,6 +21,7 @@ $consumer_secret = 'YOUR_PESAPAL_MERCHANT_CONSUMER_SECRET';
 // Change this to https://www.pesapal.com/API/PostPesapalDirectOrderV4 when you
 // are ready to go live
 $iframelink = 'http://demo.pesapal.com/api/PostPesapalDirectOrderV4';
+// $iframelink = 'https://www.pesapal.com/API/PostPesapalDirectOrderV4';
                    
 // Get form details
 $amount         = number_format($_POST['amount'], 2);   // format amount to 2 decimal places
