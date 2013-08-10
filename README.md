@@ -11,7 +11,7 @@ PesaPal partners with Banks, Mobile Network Operators and Credit Card companies
 to give consumers as many payment options as possible. For businesses, they
 offer timely settlement of any payments to their bank account of choice.
 
-_Ps: Download [this (itsmrwave/pesapal-php) here](https://github.com/itsmrwave/pesapal-php/archive/master.zip)_
+_Ps: List of releases for download can be found [github.com/itsmrwave/pesapal-php/releases][1]_
 
 _Ps 2: Purpose of this is to make it easier for other people willing to
 integrate to Pesapal ... initial code posted on the official site had some minor
@@ -300,3 +300,5 @@ _Ps 3: Live API endpoints are HTTPS but the demo api endpoints are HTTP._
 * [PesaPal Testing Sandbox](http://demo.pesapal.com/) _(official)_
 * [Pesapal Developer Community](http://developer.pesapal.com/) _(official)_
 * [Pesapal API Reference](http://developer.pesapal.com/how-to-integrate/api-reference) _(official)_
+
+[1]: https://github.com/itsmrwave/pesapal-php/releases
