@@ -39,7 +39,7 @@ that they can ammend the documentation on their site._
 ├── README.md
 ├── pesapal-iframe.php
 ├── pesapal-ipn-listener.php
-└── shopping-cart-form.php
+└── shopping-cart-form.html
 ```
 
 ##How To Use##
