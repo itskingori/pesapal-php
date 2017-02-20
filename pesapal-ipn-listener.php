@@ -71,7 +71,7 @@ if ($pesapal_notification_type == 'CHANGE' && $pesapal_transaction_tracking_id !
     // retry a number of times, if they don't receive the correct response (for
     // example due to network failure). So if successful, we update our DB ...
     // if it FAILED, we can cancel out transaction in our DB and notify user
-   if ($status = 'COMPLETED') {
+   if ($status == 'COMPLETED') {
 
         // Transaction confirmed that it's successful so we update the DB
 
