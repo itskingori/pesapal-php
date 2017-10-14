@@ -1,4 +1,4 @@
-#Pesapal PHP API Reference (Unofficial)#
+# Pesapal PHP API Reference (Unofficial)
 
 [PesaPal](pesapal.com) provides a simple, safe and secure way for individuals
 and businesses to make and accept payments in Africa. PesaPal payments work on
@@ -11,14 +11,14 @@ PesaPal partners with Banks, Mobile Network Operators and Credit Card companies
 to give consumers as many payment options as possible. For businesses, they
 offer timely settlement of any payments to their bank account of choice.
 
-_Ps: List of releases for download can be found [github.com/itsmrwave/pesapal-php/releases][1]_
+**Note 1:** List of releases for download can be found [github.com/itsmrwave/pesapal-php/releases][1]
 
-_Ps 2: Purpose of this is to make it easier for other people willing to
+**Note 2:** Purpose of this is to make it easier for other people willing to
 integrate to Pesapal ... initial code posted on the official site had some minor
 bugs. I have made these changes therein, [documented them on the Pesapal Forums
 here](http://developer.pesapal.com/forum/2-pesapal-integration/455-unofficial-
 pesapal-integration-reference) and shared my findings with the Pesapal team so
-that they can ammend the documentation on their site._
+that they can ammend the documentation on their site.
 
 ***
 
@@ -28,7 +28,7 @@ that they can ammend the documentation on their site._
 4. [API Methods](#api-methods)
 5. [Resources](#resources)
 
-##File Structure##
+## File Structure
 
 ```
 /
@@ -42,9 +42,9 @@ that they can ammend the documentation on their site._
 └── shopping-cart-form.html
 ```
 
-##How To Use##
+## How To Use
 
-###Simplified###
+### Simplified
 
 1. [Include Pesapal php file](#1-include) into your project.
 2. [Generate iFrame](#1-include) on your website using [this code _(sample)_](pesapal-iframe.php). There are [some necessary parameters required](#3-assign-form-details) to generate the form correctly which you need to provide. Please note that in [pesapal-iframe sample code](pesapal-iframe.php), an assumption is made that the data is passed in by a form ([see example shopping cart form](shopping-cart-form.php)) via the `$_POST` variable. You don't have to stick with this method, feel free to use whatever method suits you. What matters is that the data is eventually passed in.
@@ -52,9 +52,9 @@ that they can ammend the documentation on their site._
 4. At this point, it's still not safe to assume that the payment was successful. Pesapal in the meantime will be processing the payment and once it's confirmed on their end, the will send you a notification via an API call on your chosen IPN Listener URL.
 5. [Once you recieve data on the IPN](#9-listen-to-ipn-and-query-for-status), now you can query the payment status after which you can update the payment status to complete in your DB if successful.
 
-###Step-by-Step Walkthrough###
+### Step-by-Step Walkthrough
 
-####1. Include####
+#### 1. Include
 
 Include [OAuth class](OAuth.php) that helps in constructing the OAuth Request
 
@@ -62,7 +62,7 @@ Include [OAuth class](OAuth.php) that helps in constructing the OAuth Request
 include_once('OAuth.php');
 ```
 
-####2. Assign Variables####
+#### 2. Assign Variables
 
 1. `$token` and `$params` – null
 2. `$consumer_key` – merchant key issued by PesaPal to the merchant
@@ -95,7 +95,7 @@ $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
 $iframelink = 'http://demo.pesapal.com/api/PostPesapalDirectOrderV4';
 ```
 
-####3. Assign Form Details####
+#### 3. Assign Form Details
 
 Assign form details passed to [pesapal-iframe.php](pesapal-iframe.php) from
 [shopping-cart-form.php](shopping-cart-form.php) to the specified variables.
@@ -112,7 +112,7 @@ $email          = $_POST['email'];
 $phonenumber    = '';                                   // ONE of email or phonenumber is required
 ```
 
-####4. Define The Callback####
+#### 4. Define The Callback
 
 The callback is the full URL pointing to the page the iframe redirects to after
 processing the order on pesapal.com. This page will handle the response from
@@ -122,7 +122,7 @@ Pesapal.
 $callback_url = 'http://www.YOURDOMAIN.com/pesapal_callback.php';
 ```
 
-####5. Construct the POST XML####
+#### 5. Construct the POST XML
 
 The format is standard so no editing is required. Encode the variable using
 htmlentities.
@@ -144,7 +144,7 @@ $post_xml .= 'xmlns="http://www.pesapal.com" />';
 $post_xml = htmlentities($post_xml);
 ```
 
-####6. Construct the OAuth Request URL####
+#### 6. Construct the OAuth Request URL
 
 Using the Oauth class that we included, construct the OAuth Request URL using
 the parameters declared above (the format is standard so no editing is
@@ -160,7 +160,7 @@ $iframe_src -> set_parameter('pesapal_request_data', $post_xml);
 $iframe_src -> sign_request($signature_method, $consumer, $token);
 ```
 
-####7. Construct the OAuth Request URL####
+#### 7. Construct the OAuth Request URL
 
 Pass in the `$iframe_src` as the iframe’s src to generate the Pesapal iFrame
 
@@ -176,7 +176,7 @@ _Ps: When testing via demo.pesapal.com, mobile transactions done here do not
 require you to send real money using your mobile phone! Use the [dummy-money
 tool](http://demo.pesapal.com/mobilemoneytest) for your testing needs._
 
-####8. Store Payment By The User###
+#### 8. Store Payment By The User
 
 Once the payment process has been completed by the user, PesaPal will redirect
 to your site using the url you assigned to `$callback_url`, along with the
@@ -207,7 +207,7 @@ if(isset($_GET['pesapal_transaction_tracking_id'])) {
 // Save $pesapal_tracking_id in your database against the order with orderid = $reference
 ```
 
-####9. Listen to IPN and Query for Status####
+#### 9. Listen to IPN and Query for Status
 
 So, once you have posted a transaction to PesaPal, how do you find if the
 payment has competed? Or failed?
@@ -249,18 +249,18 @@ transaction using the _QueryPaymentStatus_ API method.
 To call the _QueryPaymentStatus_ API method, you need to package the request
 using OAuth, similar to [when you posted a transaction to PesaPal](#6-construct-the-oauth-request-url).
 
-_Ps: Find [sample code for the IPN-Listener here](pesapal-ipn-listener.php),
-commented for extra guidance._
+**Note 1:** Find [sample code for the IPN-Listener here](pesapal-ipn-listener.php),
+commented for extra guidance.
 
-_Ps 2: At this point you may be wondering why PesaPal didn't send you the status
+**Note 2:** At this point you may be wondering why PesaPal didn't send you the status
 of the transaction? They only send you the  `$pesapal_transaction_tracking_id`
-and the `$pesapal_merchant_reference` for security reasons._
+and the `$pesapal_merchant_reference` for security reasons.
 
-_Ps 3: Find screenshot of Merchant IPN Settings panel below;_
+**Note 3:** Find screenshot of Merchant IPN Settings panel below;
 
 ![Merchant IPN Settings Image](assets/merchant_ipn_settings.png "Merchant IPN (Instant Payment Notifications) Settings Screenshot")
 
-##Testing Sandbox##
+## Testing Sandbox
 
 On [demo.pesapal.com](http://demo.pesapal.com/), you can take PesaPal for a test
 drive. With the sandbox you can test your integration before you take it live.
@@ -273,9 +273,9 @@ When you have confirmed that the integration is working as expected, switch to
 the live pesapal site, simply by updating the url and registering a live
 merchant account.
 
-_Ps: Email and SMS notifications are not available in sandbox._
+**Note 1:** Email and SMS notifications are not available in sandbox.
 
-_Ps 2: The [live Pesapal account (on
+**Note 2:** The [live Pesapal account (on
 pesapal.com)](https://www.pesapal.com/account/register) & the [demo Pesapal
 account (on demo.pesapal.com)](http://demo.pesapal.com/account/register) are
 completely different and do not share consumer_key, consumer_secret or URLs of
@@ -283,18 +283,18 @@ Pesapal API endpoints. Links to create accounts on each are
 [here](https://www.pesapal.com/account/register) &
 [here](http://demo.pesapal.com/account/register) respectively. You will then be
 able to find the consumer key & secret in the dashboard of each account once you
-log in._
+log in.
 
-_Ps 3: Live API endpoints are HTTPS but the demo api endpoints are HTTP._
+**Note 3:** Live API endpoints are HTTPS but the demo api endpoints are HTTP.
 
-##API Methods##
+## API Methods
 
 1. __PostPesapalDirectOrderV4__ - Use this to post a transaction to PesaPal. PesaPal will present the user with a page which contains the available payment options and will redirect to your site once the user has completed the payment process. A tracking id will be returned as a query parameter – this can be used subsequently to track the payment status on pesapal for this transaction.
 2. __QueryPaymentStatus__ - Use this to query the status of the transaction. When a transaction is posted to PesaPal, it may be in a PENDING, COMPLETED or FAILED state. If the transaction is PENDING, the payment may complete or fail at a later stage. Both the unique order id generated by your system and the pesapal tracking id are required as input parameters.
 3. __QueryPaymentStatusByMerchantRef__ - Same as _QueryPaymentStatus_, but only the unique order id generated by your system is required as the input parameter.
 4. __QueryPaymentDetails__ - Same as _QueryPaymentStatus_, but additional information is returned.
 
-##Resources##
+## Resources
 
 * [PesaPal Website](https://www.pesapal.com/) _(official)_
 * [PesaPal Testing Sandbox](http://demo.pesapal.com/) _(official)_
